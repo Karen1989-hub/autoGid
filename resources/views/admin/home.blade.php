@@ -3,10 +3,10 @@
   @parent
 @endsection
     <div class="container-scroller">
-      
+
 @include('layouts.sidebar')
       <!-- partial -->
-      <div class="container-fluid page-body-wrapper">        
+      <div class="container-fluid page-body-wrapper">
         @include('layouts.navbar')
         <!-- partial -->
         <div class="main-panel">
@@ -14,7 +14,7 @@
         <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Добовление экскурсии</h4>                    
+                    <h4 class="card-title">Добовление экскурсии2</h4>
                     <form action="{{route('createExcursion')}}" enctype="multipart/form-data" method="post" class="forms-sample">
                     @csrf
                       <div class="form-group">
@@ -88,17 +88,17 @@
                           <input type="text" class="form-control file-upload-info" disabled placeholder="загрузка картини" >
                           <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button">Загрузка</button>
-                          </span>                         
+                          </span>
                         </div>
-                      </div>            
-                     
+                      </div>
+
                       <button type="submit" class="btn btn-primary mr-2">Добавить</button>
                       <button class="btn btn-dark">Сброс</button>
                     </form>
                   </div>
                 </div>
               </div>
-        {{-- content area end --}}  
+        {{-- content area end --}}
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-@include('layouts.footer')          
+@include('layouts.footer')
