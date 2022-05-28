@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ExcursionController;
 use App\Http\Controllers\EstablishmentController;
+use App\Http\Controllers\api\ApiExcursController;
+use App\Http\Controllers\api\ApiEstablishmentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,8 @@ Route::post('/updateUserPassword',[RegistrationController::class,'updateUserPass
 Route::post('/sendKeyAgain',[RegistrationController::class,'sendKeyAgain']);
 
 Route::get('/getExcursions',[ExcursionController::class,'getExcursions']);
+Route::get('/getExcursions2',[ApiExcursController::class,'getExcurs']);
+Route::post('/getDostoprimByExcursId',[ApiExcursController::class,'getDostoprimByExcursId']);
 
-Route::get('/getEstablishment',[EstablishmentController::class,'getEstablishment']);
+Route::get('/getEstablishments',[ApiEstablishmentController::class,'getEstablishments']);
 

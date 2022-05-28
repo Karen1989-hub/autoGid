@@ -113,8 +113,7 @@
                         </div>
                       </div>            
                      
-                      <button type="submit" class="btn btn-primary mr-2">Добавить</button>
-                      <button class="btn btn-dark">Сброс</button>
+                      <button type="submit" class="btn btn-primary mr-2">Обновить</button>                      
                     </form>
                   </div>
                   @endif

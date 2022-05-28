@@ -11,38 +11,8 @@ class EstablishmentController extends Controller
 {
     public function showAddEstablishmentPage(){
         return view('admin.addEstablishment');
-    }
-        /**
-     * @OA\Get(
-     * path="/autogid/public/api/getEstablishment",
-     * summary="",
-     * description="Get establishment",
-     * operationId="authLogin",
-     * tags={"Establishment"},
-     * @OA\RequestBody(
-     *    required=false,
-     *    description="Has no parameters",   
-     * ),
-     * @OA\Response(
-     *    response=200,
-     *    description="Success get establishments",
-     *    @OA\JsonContent(
-     *       @OA\Property(property="message", type="string", example="Success get establishments"),      
-     *        )
-     *     )
-     * )
-     */
-    public function getEstablishment(){
-        $establishments = Establishment::all();
-
-        return response()->json([
-            'success' => true,
-            'data' => [
-                'establishments' => $establishments, 
-            ],
-            'message' => 'Success get establishments'
-        ]);
-    }
+    }    
+    
 
     public function addEstablishment(EstablishmentsRequest $request){        
         $imgStrData = strtotime(date('Y-m-d H:i:s'));
@@ -75,13 +45,60 @@ class EstablishmentController extends Controller
         $imgNameArr = explode('/',$delete->image);
         $imgName = end($imgNameArr);
        
-        if(Storage::exists('establishmentImages/'.$imgName)){
-        
+        if(Storage::exists('establishmentImages/'.$imgName)){        
             Storage::delete('establishmentImages/'.$imgName);
           }
         $delete->delete();
 
         return back();
+    }
+
+    public function showEditEstablishmentPage(Request $request){
+        $establishment = null;
+        $id = $request->id;
+        if(isset($request->id) && $request->id!=''){
+            $establishment = Establishment::find($request->id);           
+        }
+        
+        $establishments = Establishment::all();
+        return view('admin.editEstablishment',compact(['establishments','establishment']));
+    }
+
+    public function updateEstablishment(Request $request){        
+        $establishment_id = $request->establishment_id;
+        $img = $request->file('img');
+        $imgName = null;
+        $imgStrData = null;
+        if($img != null){
+            $imgName = $img->getClientOriginalName();                         
+        }
+
+        $update = Establishment::find($establishment_id);  
+        $update->title = $request->title;
+        $update->address = $request->address;
+        $update->distance = $request->distance;
+        $update->time = $request->time;
+        $delImageNameNotFilter = explode('/',$update->image);
+        $delImageName = end($delImageNameNotFilter);
+    
+        if($imgName != null){
+            if(Storage::exists('establishmentImages/'.$delImageName)){
+                Storage::delete('establishmentImages/'.$delImageName);
+            } 
+            $imgStrData = strtotime(date('Y-m-d H:i:s'))."_".$imgName;
+
+            $path=$request->file('img')->storeAs('establishmentImages',$imgStrData);  
+            $update->image = 'http://80.78.246.59/autogid/public/storage/establishmentImages/'.$imgStrData;          
+        } 
+
+        $update->latitude = $request->latitude;
+        $update->longitude = $request->longitude;
+        $update->save();
+        return back();
+    }
+
+    public function showCheckEstablishment(){
+        return view('admin.test.checkEstablishmentInMap');
     }
 
     

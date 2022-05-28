@@ -17,6 +17,8 @@ class Sight extends Model
     public function dostoprim(){
         return $this->belongsToMany(Dostoprim::class,'sight_dostoprim','sight_id','dostoprim_id');
     }
+
+    
 }
 
 

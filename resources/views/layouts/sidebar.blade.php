@@ -26,6 +26,16 @@
                     <p class="preview-subject ellipsis mb-1 text-small">Изменить пароль</p>
                   </div>
                 </a>
+                <a href="{{route('showCheckEstablishment')}}" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-onepassword  text-info"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Проверить по карте</p>
+                  </div>
+                </a>
               </div>
             </div>
           </li>
@@ -45,21 +55,7 @@
                 <li class="nav-item"> <a class="nav-link" href="{{route('showEditExcursionPage')}}">Редоктировать <br>экскурсии</a></li>              
               </ul>
             </div>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" id='clientObjs' href="#auth" aria-expanded="false" aria-controls="auth">
-              
-              <span class="menu-title">Зовeдения клиентов</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth2">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('showAdminHomePage')}}">Добовление экскурсии</a></li>                
-                <li class="nav-item"> <a class="nav-link" href="{{route('showAddDostoprimToExcursPage')}}">Прикрепить <br>достопримечательность</a></li>  
-                <li class="nav-item"> <a class="nav-link" href="{{route('showEditExcursionPage')}}">Редоктировать <br>экскурсии</a></li>              
-              </ul>
-            </div>
-          </li>
+          </li>          
           <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-title">Достопримечательности</span>
@@ -74,15 +70,20 @@
               </ul>
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{route('showEditDostoprimPage')}}">Редоктировать<br> достопримечательност</a></li>                
-              </ul>
+              </ul>              
+            </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" id='clientObjs' href="#auth" aria-expanded="false" aria-controls="auth">
+              
+              <span class="menu-title">Завeдения клиентов</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth2">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('showAddEstablishmentPage')}}">Добовление<br> зовeдения</a></li>                
-              </ul>
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('showDeleteEstablishmentPage')}}">Удаление<br> зовeдения</a></li>                
-              </ul>
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{route('showDeleteEstablishmentPage')}}">Редактироват<br> зовeдение</a></li>                
+                <li class="nav-item"> <a class="nav-link" href="{{route('showAddEstablishmentPage')}}">Добавление завeдения</a></li>                
+                <li class="nav-item"> <a class="nav-link" href="{{route('showDeleteEstablishmentPage')}}">Удаление<br>заведения</a></li>  
+                <li class="nav-item"> <a class="nav-link" href="{{route('showEditEstablishmentPage')}}">Редактировать <br>заведения</a></li>              
               </ul>
             </div>
           </li>

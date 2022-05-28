@@ -29,7 +29,8 @@ class DostoprimController extends Controller
             'description'=>$request->description,
             'price'=>$request->price,
             'latitude'=>$request->latitude,
-            'longitude'=>$request->longitude           
+            'longitude'=>$request->longitude,
+            'audio'=>$request->audio           
         ];
         $dostoprim = Dostoprim::create($data); 
         
@@ -117,7 +118,9 @@ class DostoprimController extends Controller
         return view('admin.editDostoprim',$arr);
     }
 
-    public function updateDostoprim(DostoprimRequest $request){        
+    public function updateDostoprim(DostoprimRequest $request){   
+        $imgStrData = strtotime(date('Y-m-d H:i:s'));
+
         $dostoprim_id = $request->dostoprim_id;
         $title = $request->title;
         $address = $request->address;
@@ -150,9 +153,9 @@ class DostoprimController extends Controller
                 continue;
             }
 
-            $origanName = $img->getClientOriginalName();
-            $path=$img->storeAs('dostoprimImages',$origanName);   
-            DostoprimImage::create(['dostoprim_id'=>$dostoprim_id,'dostoprim_img'=>'http://80.78.246.59/autogid/public/storage/dostoprimImages/'.$origanName]);        
+            $origanName = $img->getClientOriginalName();  
+            $path=$img->storeAs('dostoprimImages',$imgStrData."_".$origanName);   
+            DostoprimImage::create(['dostoprim_id'=>$dostoprim_id,'dostoprim_img'=>'http://80.78.246.59/autogid/public/storage/dostoprimImages/'.$imgStrData."_".$origanName]);        
             }
         }
         return back();

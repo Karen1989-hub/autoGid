@@ -1,3 +1,7 @@
 $('#clientObjs').click(function(){
-    $(this).next().addClass('show');
+    if($(this).next().hasClass('show')){
+        $(this).next().removeClass('show');
+    } else {
+        $(this).next().addClass('show');
+    }    
 });

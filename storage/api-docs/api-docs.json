@@ -71,6 +71,55 @@
                     }
                 }
             }
+        },
+        "/getDostoprimByExcursId": {
+            "post": {
+                "tags": [
+                    "Excursion"
+                ],
+                "summary": "",
+                "description": "get dostoprims by excursion id",
+                "operationId": "getDostoprimByExcursId",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "excursion_id"
+                                ],
+                                "properties": {
+                                    "excursion_id": {
+                                        "type": "integer",
+                                        "format": "id",
+                                        "example": "12"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

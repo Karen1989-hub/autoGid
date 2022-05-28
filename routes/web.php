@@ -50,9 +50,11 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/showAddEstablishmentPage',[EstablishmentController::class,'showAddEstablishmentPage'])->name('showAddEstablishmentPage');
     Route::post('/addEstablishment',[EstablishmentController::class,'addEstablishment'])->name('addEstablishment');
     Route::get('/showDeleteEstablishmentPage',[EstablishmentController::class,'showDeleteEstablishmentPage'])->name('showDeleteEstablishmentPage');
-    Route::post('/deleteEstablishment',[EstablishmentController::class,'deleteEstablishment'])->name('deleteEstablishment');;
+    Route::post('/deleteEstablishment',[EstablishmentController::class,'deleteEstablishment'])->name('deleteEstablishment');
+    Route::get('/showEditEstablishmentPage',[EstablishmentController::class,'showEditEstablishmentPage'])->name('showEditEstablishmentPage');
+    Route::post('/updateEstablishment',[EstablishmentController::class,'updateEstablishment'])->name('updateEstablishment');
 
-    
+    Route::get('/showCheckEstablishment',[EstablishmentController::class,'showCheckEstablishment'])->name('showCheckEstablishment');
 });
 
 

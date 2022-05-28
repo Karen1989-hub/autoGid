@@ -1,3 +1,10 @@
+<style>
+  .img1{
+    width:100px!important;
+    height:100px!important;
+    border-radius:0%!important;
+  }
+</style>
 @extends('layouts.main')
 @section('header')
   @parent
@@ -29,7 +36,7 @@
                         @foreach ($establishments as $val)
                           <tr>
                             <td style='color:white'> {{$val->title}} </td>
-                            <td>  </td>  
+                            <td><img class='img1' src="{{$val->image}}"></td>  
                             <td> 
                             <form action="{{route('deleteEstablishment')}}" method="post">
                             @csrf
